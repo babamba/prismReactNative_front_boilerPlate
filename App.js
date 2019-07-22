@@ -74,7 +74,6 @@ export default function App() {
       });
 
       const httpLink = new HttpLink({
-        //uri: "exp://10.50.1.226:19000"
         uri: "http://localhost:4000"
       });
 
