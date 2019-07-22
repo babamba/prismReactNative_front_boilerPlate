@@ -108,49 +108,6 @@ export default function App() {
         httpLink
       );
 
-      // const request = async operation => {
-      //   const token = await AsyncStorage.getItem("jwt");
-      //   console.log("token : ", token);
-      //   operation.setContext({
-      //     headers: {
-      //       Authorization: `Bearer ${token}`
-      //     }
-      //   });
-      // };
-
-      // const requestLink = new ApolloLink(
-      //   (operation, forward) =>
-      //     new Observable(observer => {
-      //       let handle;
-      //       Promise.resolve(operation)
-      //         .then(oper => request(oper))
-      //         .then(() => {
-      //           handle = forward(operation).subscribe({
-      //             next: observer.next.bind(observer),
-      //             error: observer.error.bind(observer),
-      //             complete: observer.complete.bind(observer)
-      //           });
-      //         })
-      //         .catch(observer.error.bind(observer));
-
-      //       return () => {
-      //         if (handle) handle.unsubscribe();
-      //       };
-      //     })
-      // );
-
-      // const authLink = setContext((_, { headers }) => {
-      //   // get the authentication token from local storage if it exists
-      //   const token = localStorage.getItem('token');
-      //   // return the headers to the context so httpLink can read them
-      //   return {
-      //     headers: {
-      //       ...headers,
-      //       authorization: token ? `Bearer ${token}` : "",
-      //     }
-      //   }
-      // });
-
       const client = new ApolloClient({
         cache,
         link: ApolloLink.from([
@@ -167,17 +124,6 @@ export default function App() {
         ])
       });
 
-      // const client = new ApolloClient({
-      //   cache,
-      //   request: async operation => {
-      //     const token = await AsyncStorage.getItem("jwt");
-      //     return operation.setContext({
-      //       headers: { Authorization: `Bearer ${token}` }
-      //     });
-      //   },
-      //   ...apolloClientOptions
-      // });
-
       const isLoggedIn = await AsyncStorage.getItem("isLoggedIn");
       if (!isLoggedIn || isLoggedIn === "false") {
         setIsLoggedIn(false);
@@ -192,7 +138,7 @@ export default function App() {
   };
   useEffect(() => {
     preLoad();
-    //ask();
+    //ask(); // if you used App Loading Permission.
   }, []);
 
   useEffect(() => {
