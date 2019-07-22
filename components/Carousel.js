@@ -22,11 +22,9 @@ const MyCarousel = props => {
   //   let carouselRef = useRef();
   const [carouselRef, setCarouselRef] = useState(() => createRef());
   const [activeSlide, setActiveSlide] = useState(SLIDER_1_FIRST_ITEM);
-
-  const { onSnapUser, data, navigation } = props;
+  const { data, navigation } = props;
 
   const _renderItem = ({ item, index }, parallaxProps) => {
-    //console.log("item thumbnail", item.thumbnail);
     return (
       <TouchableOpacity
         activeOpacity={0.8}
@@ -36,26 +34,14 @@ const MyCarousel = props => {
       >
         <View style={styles.item}>
           <Text style={styles.title} numberOfLines={2}>
-            {/* {item.exerciseTime} */}
-            test
+            {item.title}
           </Text>
-          {/* <ParallaxImage
-            source={{ uri: item.thumbnail }}
-            containerStyle={styles.imageContainer}
-            style={styles.image}
-            parallaxFactor={0.4}
-            fadeDuration={300}
-            {...parallaxProps}
-          /> */}
-
-          {/* <Image
+          <Image
             source={{
-              uri: item.planImage ? item.planImage : item.exerciseType.image
+              uri: item.image ? item.image : ""
             }}
-            //   containerStyle={styles.imageContainer}
             style={styles.image}
-            //   {...parallaxProps}
-          /> */}
+          />
         </View>
       </TouchableOpacity>
     );
@@ -83,8 +69,8 @@ const MyCarousel = props => {
         data={data}
         renderItem={data => _renderItem(data)}
         hasParallaxImages={false}
-        //    onSnapToItem={index => onSnapUser(index)}
         onSnapToItem={index => setActiveSlide(index)}
+        layout={"tinder"}
         enableMomentum={true}
         activeAnimationType={"spring"}
         activeSlideAlignment={"center"}
