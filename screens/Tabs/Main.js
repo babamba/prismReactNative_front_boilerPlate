@@ -3,6 +3,8 @@ import styled from "styled-components";
 import gql from "graphql-tag";
 import { useQuery } from "react-apollo-hooks";
 import Loader from "../../components/Loader";
+import { SafeAreaView } from "react-navigation";
+import commonStyle from "../../constants/Styles";
 
 // element
 
@@ -11,6 +13,9 @@ const View = styled.View`
   align-items: center;
   flex: 1;
 `;
+
+const MainTitleArea = styled.View``;
+const SubTitleArea = styled.View``;
 
 const Main_Text = styled.Text`
   font-size: 40px;
@@ -58,9 +63,15 @@ export default () => {
   }, [data]);
 
   return (
+    //     <SafeAreaView style={commonStyle.safeArea} forceInset={{ top: "always" }}>
     <View>
-      <Main_Text>Main</Main_Text>
-      {loading ? <Loader /> : data && <Sub_Text>{data.sayHello}</Sub_Text>}
+      <MainTitleArea>
+        <Main_Text>Main</Main_Text>
+      </MainTitleArea>
+      <SubTitleArea>
+        {loading ? <Loader /> : data && <Sub_Text>{data.sayHello}</Sub_Text>}
+      </SubTitleArea>
     </View>
+    //     </SafeAreaView>
   );
 };

@@ -13,7 +13,7 @@ import { View } from "react-native";
 
 import NavIcon from "../components/NavIcon";
 import { stackStyles } from "./config";
-import styles from "../styles";
+import styles from "../constants/Styles";
 
 const stackFactory = (initialRoute, customConfig) =>
   createStackNavigator(

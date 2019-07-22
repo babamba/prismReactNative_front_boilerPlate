@@ -1,7 +1,7 @@
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import PropTypes from "prop-types";
-import styles from "../styles";
+import styles from "../constants/Styles";
 
 const NavIcon = ({
   focused = true,

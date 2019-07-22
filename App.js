@@ -7,7 +7,7 @@ import * as Font from "expo-font";
 import { AsyncStorage } from "react-native";
 import { ThemeProvider } from "styled-components";
 
-import styles from "./styles";
+import styles from "./constants/Styles";
 import NavController from "./components/NavController";
 import { AuthProvider } from "./AuthContext";
 
