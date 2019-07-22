@@ -41,7 +41,13 @@ export default () => {
 
   // Component Did Mount 스크린이 붙고 난 후.
   useEffect(() => {
+    // Component Did Mount 스크린이 붙고 난 후.
     console.log("mount screen ");
+
+    // Component Did UnMount 스크린이 붙고 난 후.
+    return () => {
+      console.log("screen cleaned up");
+    };
   }, []);
 
   // Component State Effect
